@@ -1,0 +1,82 @@
+CRUD Documentation and Implementation:
+
+The CRUD is a standard code written in Java. The Code is completely structured and just need to be compiled once by providing the specific details of the database and then hosting the WAR File on the server. The code is well formed to support concurrency feature.  
+
+The JSON to be hit to the server URL is as follow:
+
+INSERT Operation:
+
+	URL:  http://--------.com/<----ProjectName---->/DataSeeker
+	REQUEST: POST
+	JSON:  {
+			"type":"insert", 
+			"database_name":"--------", 
+			"table_name":"---------", 
+			"data": 
+			{ 
+				"column_name" : ["--","-----","------"], 
+				"column_values" : ["--", "-----", "------"]
+			}
+		}
+
+
+
+UPDATE Operation:
+
+	URL:	http://--------.com/<----ProjectName---->/DataSeeker
+	REQUEST: POST
+	JSON:  {
+			"type":"update", 
+			"database_name":"-------", 
+			"table_name":"-------", 
+			"data": 
+			{ 
+				"column_name" : ["------","------"], 
+				"column_values" : ["-------", "------"]
+				"where":
+				{
+					"primary_key":"------", 
+					"key_value":"------"
+				}
+			}
+		}
+
+DELETE Operation:
+
+	URL:	http://--------.com/<----ProjectName---->/DataSeeker
+	REQUEST: POST
+	JSON:  {
+			"type":"delete", 
+			"database_name":"-------", 
+			"table_name":"--------", 
+			"data": 
+			{ 
+				"where":
+				{
+					"primary_key":"------",          // This field Primary Key asks for the column name and value on which
+													//	row can be determined by Data Source. 
+					"key_value":"-------"
+				}
+			}
+		}	
+
+SELECT Operation:
+
+	URL:	http://--------.com/<----ProjectName---->/DataSeeker
+	REQUEST: POST
+	JSON:  {
+			"type":"select", 
+			"database_name":"----------", 
+			"table_name":"-----------", 
+			"data": 
+			{ 
+				"column_name":[],
+		// column name array value can be "*" if we require all the columns, and we can also specify certain column names.
+		// where clause is additional.	
+				"where":
+				{
+					"primary_key":"------", 
+					"key_value":"------"
+				}
+			}
+		}
